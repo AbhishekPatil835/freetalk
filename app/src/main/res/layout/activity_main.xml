@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".android.MainActivity">
 
     <ImageView
         android:id="@+id/imageViewBack"
@@ -44,12 +44,14 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:contentDescription="@string/postview"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/editTextComment"
         app:layout_constraintTop_toBottomOf="@id/imageViewBack">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:paddingTop="10dp"
+            android:paddingBottom="30dp">
 
             <ImageView
                 android:id="@+id/imageViewProfile"
@@ -151,14 +153,310 @@
                 app:layout_constraintStart_toStartOf="@id/imageViewProfile"
                 app:layout_constraintTop_toBottomOf="@id/textViewPostHeader" />
 
-            <View
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/viewTags"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textViewPostDescription"/>
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/imageViewPost"
+                android:layout_width="match_parent"
+                android:layout_height="550dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/viewTags"/>
+            <ImageView
+                android:id="@+id/imageViewLike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="22dp"
+                android:src="@drawable/heartpng"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageViewPost"/>
+            <TextView
+                android:id="@+id/textViewLikeNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/grey"
+                android:text="5"
+                android:layout_marginStart="6dp"
+                android:textSize="12sp"
+                android:fontFamily="@font/notosans400"
+                app:layout_constraintBottom_toBottomOf="@id/imageViewLike"
+                app:layout_constraintStart_toEndOf="@id/imageViewLike"
+                app:layout_constraintTop_toTopOf="@id/imageViewLike"/>
+
+            <ImageView
+                android:id="@+id/imageViewComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/comment"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toEndOf="@id/textViewLikeNumber"
+                app:layout_constraintTop_toBottomOf="@id/imageViewPost"/>
+            <TextView
+                android:id="@+id/textViewCommentNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/grey"
+                android:text="5"
+                android:layout_marginStart="6dp"
+                android:textSize="12sp"
+                android:fontFamily="@font/notosans400"
+                app:layout_constraintBottom_toBottomOf="@id/imageViewLike"
+                app:layout_constraintStart_toEndOf="@id/imageViewComment"
+                app:layout_constraintTop_toTopOf="@id/imageViewLike"/>
+            <ImageView
+                android:id="@+id/imageViewSave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/save"
+                app:layout_constraintBottom_toBottomOf="@id/imageViewComment"
+                app:layout_constraintStart_toEndOf="@id/textViewCommentNumber"
+                app:layout_constraintTop_toTopOf="@id/imageViewComment"/>
+            <ImageView
+                android:id="@+id/imageViewdots"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/_dots"
+                app:layout_constraintBottom_toBottomOf="@id/imageViewComment"
+                app:layout_constraintStart_toEndOf="@id/imageViewSave"
+                app:layout_constraintTop_toTopOf="@id/imageViewComment"/>
+
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grey"
+                app:layout_constraintTop_toBottomOf="@id/imageViewLike"
+                android:layout_marginTop="16dp"/>
+
+            <ImageView
+                android:id="@+id/imageViewProfileComment"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/profile"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/line" />
+
+            <TextView
+                android:id="@+id/textViewUserNameComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/notosans700"
+                android:includeFontPadding="false"
+                android:textColor="@color/black"
+                android:text="@string/userName"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/imageViewProfileComment"
+                app:layout_constraintStart_toEndOf="@id/imageViewProfileComment"
+                app:layout_constraintTop_toTopOf="@id/imageViewProfileComment" />
+
+            <ImageView
+                android:id="@+id/imageViewGreenTickComment"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_marginStart="5dp"
+                android:src="@drawable/green_tick"
+                app:layout_constraintBottom_toBottomOf="@id/textViewUserNameComment"
+                app:layout_constraintStart_toEndOf="@id/textViewUserNameComment"
+                app:layout_constraintTop_toTopOf="@id/textViewUserNameComment" />
+
+            <TextView
+                android:id="@+id/textViewSubUserNameComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/notosans500"
+                android:includeFontPadding="false"
+                android:text="1일전"
+                android:textColor="#919EB6"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@id/imageViewGreenTickComment"
+                app:layout_constraintStart_toEndOf="@id/imageViewGreenTickComment"
+                app:layout_constraintTop_toTopOf="@id/imageViewGreenTickComment" />
+            <ImageView
+                android:id="@+id/imageViewCommentdots1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/_dots"
+                app:layout_constraintBottom_toBottomOf="@id/imageViewProfileComment"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/imageViewProfileComment"/>
+            <TextView
+                android:id="@+id/textViewComment1Description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/notosans700"
+                android:includeFontPadding="false"
+                android:textColor="@color/grey"
+                tools:text="@string/userName"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@id/textViewFollow"
+                app:layout_constraintStart_toEndOf="@id/imageViewProfileComment"
+                app:layout_constraintTop_toBottomOf="@id/imageViewProfileComment" />
+            <ImageView
+                android:id="@+id/imageViewLikeComment1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="22dp"
+                android:src="@drawable/heartpng"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="@id/textViewComment1Description"
+                app:layout_constraintTop_toBottomOf="@id/textViewComment1Description"/>
+            <TextView
+                android:id="@+id/textViewLikeNumberComment2r"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/grey"
+                android:text="5"
+                android:layout_marginStart="6dp"
+                android:textSize="12sp"
+                android:fontFamily="@font/notosans400"
+                app:layout_constraintBottom_toBottomOf="@id/imageViewLikeComment1"
+                app:layout_constraintStart_toEndOf="@id/imageViewLikeComment1"
+                app:layout_constraintTop_toTopOf="@id/imageViewLikeComment1"/>
+
+            <ImageView
+                android:id="@+id/imageViewComment1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/comment"
+                app:layout_constraintStart_toEndOf="@id/textViewLikeNumberComment2r"
+                app:layout_constraintTop_toTopOf="@id/imageViewLikeComment1"/>
+            <TextView
+                android:id="@+id/textViewCommentNumber1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/grey"
+                android:text="5"
+                android:layout_marginStart="6dp"
+                android:textSize="12sp"
+                android:fontFamily="@font/notosans400"
+                app:layout_constraintBottom_toBottomOf="@id/imageViewLikeComment1"
+                app:layout_constraintStart_toEndOf="@id/imageViewComment1"
+                app:layout_constraintTop_toTopOf="@id/imageViewLikeComment1"/>
+
+            <ImageView
+                android:id="@+id/imageViewProfileComment2"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/ouoprofile"
+                app:layout_constraintStart_toStartOf="@id/imageViewLikeComment1"
+                app:layout_constraintTop_toBottomOf="@id/imageViewLikeComment1" />
+
+            <TextView
+                android:id="@+id/textViewUserNameComment2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/notosans700"
+                android:includeFontPadding="false"
+                android:textColor="@color/black"
+                android:text="ㅇㅅㅇ"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/imageViewProfileComment2"
+                app:layout_constraintStart_toEndOf="@id/imageViewProfileComment2"
+                app:layout_constraintTop_toTopOf="@id/imageViewProfileComment2" />
+
+            <ImageView
+                android:id="@+id/imageViewGreenTickComment2"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_marginStart="5dp"
+                android:src="@drawable/green_tick"
+                app:layout_constraintBottom_toBottomOf="@id/textViewUserNameComment2"
+                app:layout_constraintStart_toEndOf="@id/textViewUserNameComment2"
+                app:layout_constraintTop_toTopOf="@id/textViewUserNameComment2" />
+
+            <TextView
+                android:id="@+id/textViewSubUserNameComment2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/notosans500"
+                android:includeFontPadding="false"
+                android:text="1일전"
+                android:textColor="#919EB6"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@id/imageViewGreenTickComment2"
+                app:layout_constraintStart_toEndOf="@id/imageViewGreenTickComment2"
+                app:layout_constraintTop_toTopOf="@id/imageViewGreenTickComment2" />
+            <TextView
+                android:id="@+id/textViewComment1Description2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/notosans700"
+                android:includeFontPadding="false"
+                android:textColor="@color/grey"
+                tools:text="@string/userName"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@id/textViewFollow"
+                app:layout_constraintStart_toEndOf="@id/imageViewProfileComment2"
+                app:layout_constraintTop_toBottomOf="@id/imageViewProfileComment2" />
+            <ImageView
+                android:id="@+id/imageViewLikeComment2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="22dp"
+                android:src="@drawable/heartpng"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="@id/textViewComment1Description2"
+                app:layout_constraintTop_toBottomOf="@id/textViewComment1Description2"/>
+            <TextView
+                android:id="@+id/textViewLikeNumberComment3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/grey"
+                android:text="5"
+                android:layout_marginStart="6dp"
+                android:textSize="12sp"
+                android:fontFamily="@font/notosans400"
+                app:layout_constraintBottom_toBottomOf="@id/imageViewLikeComment2"
+                app:layout_constraintStart_toEndOf="@id/imageViewLikeComment2"
+                app:layout_constraintTop_toTopOf="@id/imageViewLikeComment2"/>
+
+             </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
+    <EditText
+        android:id="@+id/editTextComment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/white"
+        android:hint="댓글을 남겨주세요."
+        android:drawablePadding="10dp"
+        android:paddingVertical="15dp"
+        android:drawableStart="@drawable/imagesmode"
+        android:paddingStart="16dp"/>
+    <TextView
+        android:id="@+id/textViewSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="등록"
+        android:fontFamily="@font/notosans500"
+        android:textColor="@color/grey"
+        app:layout_constraintTop_toTopOf="@+id/editTextComment"
+        app:layout_constraintBottom_toBottomOf="@id/editTextComment"
+        app:layout_constraintEnd_toEndOf="@id/editTextComment"
+        android:layout_marginEnd="16dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
