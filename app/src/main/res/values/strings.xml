@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Free Talk</string>
+    <string name="free_talk">자유톡</string>
+    <string name="postview">PostView</string>
+    <string name="back_button">Back button</string>
+    <string name="notification_icon">notification icon</string>
+    <string name="userName">안녕 나 응애</string>
+</resources>
